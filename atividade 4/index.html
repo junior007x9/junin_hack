@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tela de Cadastro</title>
+</head>
+<body>
+  <h1>Cadastro</h1>
+  <form action="processa_cadastro.php" method="POST">
+    <p>
+      <label for="login">Login:</label>
+      <input type="text" id="login" name="login" required>
+    </p>
+    <p>
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required>
+    </p>
+    <p>
+      <label for="confirma_senha">Confirme a senha:</label>
+      <input type="password" id="confirma_senha" name="confirma_senha" required>
+    </p>
+    <p>
+      <label for="sexo">Sexo:</label>
+      <select id="sexo" name="sexo" required>
+        <option value="">Selecione</option>
+        <option value="F">Feminino</option>
+        <option value="M">Masculino</option>
+        <option value="O">Outro</option>
+      </select>
+    </p>
+    <p>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </p>
+    <p>
+      <label for="interesses">Interesses:</label>
+      <input type="checkbox" id="futebol" name="interesses[]" value="futebol">
+      <label for="futebol">Futebol</label>
+      <input type="checkbox" id="politica" name="interesses[]" value="politica">
+      <label for="politica">Política</label>
+      <input type="checkbox" id="economia" name="interesses[]" value="economia">
+      <label for="economia">Economia</label>
+      <input type="checkbox" id="carros" name="interesses[]" value="carros">
+      <label for="carros">Carros</label>
+      <input type="checkbox" id="celebridades" name="interesses[]" value="celebridades">
+      <label for="celebridades">Celebridades</label>
+    </p>
+    <p>
+      <input type="submit" value="Cadastrar">
+    </p>
+  </form>
+</body>
+</html>
