@@ -5,6 +5,7 @@ body {
   padding: 0;
   background-color: #ffffff;
   overflow: hidden;
+  position: relative;
 }
 
 
@@ -31,6 +32,7 @@ h1 {
   flex-wrap: wrap;
   justify-content:flex-start;
   padding: 20px;
+  z-index: 1;
 }
 
 .atividade {
