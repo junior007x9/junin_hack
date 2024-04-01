@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência de Viagens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .destination-form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Agência de Viagens</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Destinos</a></li>
+                <li><a href="#">Pacotes</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>Destinos Populares</h2>
+    <img src="paris.jpg" alt="Paris">
+    <p>Paris - A cidade do amor e das luzes.</p>
+
+    <img src="rio.jpg" alt="Rio de Janeiro">
+    <p>Rio de Janeiro - Praias, samba e Carnaval.</p>
+
+    <img src="tokyo.jpg" alt="Tóquio">
+    <p>Tóquio - Modernidade e tradição no Japão.</p>
+
+    <div class="destination-form">
+        <h2>Escolha seu destino</h2>
+        <form action="processar_formulario.php" method="post">
+            <label for="destino">Selecione o destino:</label>
+            <select name="destino" id="destino">
+                <option value="paris">Paris</option>
+                <option value="rio">Rio de Janeiro</option>
+                <option value="tokyo">Tóquio</option>
+            </select>
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
