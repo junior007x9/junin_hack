@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="elemento.js"></script>
+  <script type="text/javascript">
+    function mostravalor(componente){
+      var idade = componente.getAttribute("data-idade");
+      alert(idade);
+      var cpf = componente.getAttribute("data-cpf");
+      alert(cpf);
+    }
+
+  </script>
+  <link rel="stylesheet" type="text/css"
+  href="estilo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<ul>
+  <li class="pessoa,idade.cpf" onclick="mostravalor(this)" data-idade="20" data-cpf="192.189.200-30">João</li>
+  <li class="pessoa.idade.cpf" onclick="mostravalor(this)" data-idade="30" data-cpf="191.389.278-20">José</li>
+  <li class="pessoa.idade.cpf" onclick="mostravalor(this)" data-idade="40" data-cpf="182.289.298-10">Maria</li>
+</ul>
+</html>
