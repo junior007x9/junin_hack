@@ -1,0 +1,21 @@
+.pessoa{
+  color: red;
+}
+.pessoa[data-idade='30']{
+  color:blue;
+}
+.pessoa::before{
+  content: 'antes';
+}
+.pessoa::after{
+  content: 'depois';
+}
+.red {
+  color: red;
+  list-style-type: disc;
+}
+
+.blue {
+  color: blue;
+  list-style-type: circle;
+}

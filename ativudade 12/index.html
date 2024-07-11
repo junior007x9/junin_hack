@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="elemento.js"></script>
+  <script type="text/javascript">
+    function mostravalor(componente){
+      var idade = componente.getAttribute("data-idade");
+      alert(idade);
+      var cpf = componente.getAttribute("data-cpf");
+      alert(cpf);
+    }
+
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css"
+  href="estilo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade 12</title>
+</head>
+<body>
+  
+</body>
+<ul>
+  <li data-idade="20" data-cpf="999" class="red">Nome: João - Idade: <span class="idade"></span> 20 - C.P.F: <span class="cpf"></span></li>
+  <li data-idade="30" data-cpf="888" class="blue">Nome: José - Idade: <span class="idade"></span> 30 - C.P.F: <span class="cpf"></span></li>
+  <li data-idade="40" data-cpf="777" class="red">Nome: Maria - Idade: <span class="idade"></span> 40 - C.P.F: <span class="cpf"></span></li>
+</ul>
+<script src="script.js"></script>
+</html>
