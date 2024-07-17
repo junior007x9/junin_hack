@@ -6,8 +6,6 @@ body {
   background-color: #ffffff;
   overflow: hidden;
   position: relative;
-  overflow: auto;
-  height: 500px;
 }
 
 header {
@@ -15,8 +13,6 @@ header {
   color: #ffffff;
   padding: 10px 0;
   text-align: center;
-  overflow: auto;
-  height: 500px;
 }
 
 h1 {
