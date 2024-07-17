@@ -1,0 +1,39 @@
+.box{
+  position: relative;
+  left: 10px;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+  background: red;
+  animation-name: minhaAni;
+  animation-duration: 5s;
+  animation-delay: 3s;
+  animation-iteration-count: 4;
+  animation: rotateColor 10s infinite
+}
+.box:hover{
+  border:solid 5px black;
+  transition:border 3s 2s;
+}
+@keyframes rotateColor {
+  0% {
+      transform: rotate(0deg);
+      background-color: red;
+  }
+  25% {
+      transform: rotate(90deg);
+      background-color: blue;
+  }
+  50% {
+      transform: rotate(180deg);
+      background-color: green;
+  }
+  75% {
+      transform: rotate(270deg);
+      background-color: yellow;
+  }
+  100% {
+      transform: rotate(360deg);
+      background-color: red;
+  }
+}
