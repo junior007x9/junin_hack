@@ -6,6 +6,8 @@ body {
   background-color: #ffffff;
   overflow: hidden;
   position: relative;
+  overflow: auto;
+  height: 50px;
 }
 
 header {
