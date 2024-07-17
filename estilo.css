@@ -19,7 +19,9 @@ header {
 h1 {
   margin: 0;
 }
-
+article{
+  overflow: auto; 
+}
 #atividades {
   display: flex;
   flex-wrap: wrap;
