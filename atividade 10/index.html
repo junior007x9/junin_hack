@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #f4f4f4; 
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px; 
+    width: 300px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform .2s; 
+    background-color: #fff; 
+}
+
+.card:hover {
+    transform: scale(1.05); 
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+}
+
+.card header {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2em; 
+}
+
+.card p {
+    padding: 10px;
+    text-align: justify;
+    line-height: 1.6; 
+}
+
+.card footer {
+    padding: 10px;
+    text-align: right;
+    font-size: 0.8em;
+    color: #666;
+    border-top: 1px solid #ddd; 
+}
+
+</style>
+</head>
+<body>
+    <nav class="card">
+        <header>Notícias</header>
+        <img src="imagens/teste.png" alt="Imagem da Notícia 1">
+        <p>Fofinhos, mas tóxicos: os primatas venenosos que nasceram nos EUA</p>
+        <footer>11/04/2024</footer>
+    </nav>
+    <nav class="card">
+        <header>Notícias</header>
+        <img src="imagens/image1.jpg.webp" 
+        alt="Imagem da Notícia 2">
+        <p>Mais chineses vêm aí: veja marcas que trarão seus carros ao Brasil em 2024
+        </p>
+        <footer>11/04/2024</footer>
+    </nav>
+    <nav class="card">
+        <header>Notícias</header>
+        <img src="imagens/teste1.png" alt="Imagem da Notícia 3">
+        <p>Mega-Sena sorteia prêmio acumulado de R$ 48,6 milhões; veja as dezenas</p>
+        <footer>11/04/2024</footer>
+    </nav>
+    <nav class="card">
+        <header> Notícias</header>
+        <img src="imagens/tesgd.png" alt="Imagem da Notícia 4">
+        <p>Lira diz que governo Lula planta mentiras e Padilha é incompetente
+        </p>
+        <footer>11/04/2024</footer>
+    </nav>
+</body>
+</html>
