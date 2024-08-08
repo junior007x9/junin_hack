@@ -1,0 +1,19 @@
+.coluna {
+
+            border: 5px solid rgb(253, 253, 253);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left-column img {
+            flex: 1;
+            width: 100%;
+        }
