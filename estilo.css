@@ -1,12 +1,12 @@
-
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'JetBrains Mono', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
   overflow: hidden;
-  position: relative;
+  position: auto;
   overflow: auto;
+  
 }
 
 header {
@@ -14,13 +14,16 @@ header {
   color: #ffffff;
   padding: 10px 0;
   text-align: center;
+  position: auto;
 }
 
 h1 {
   margin: 0;
 }
 article{
-  overflow: auto; 
+  overflow: auto;
+  position: auto;
+
 }
 #atividades {
   display: flex;
@@ -28,18 +31,26 @@ article{
   justify-content:flex-start;
   padding: 20px;
   z-index: 1;
+  padding: auto;
+  position: auto ;
 }
+
+
 
 .atividade {
   background-color: #c9c9c9;
-  border: 5px solid #d22020;
+  border: 5px solid #333;
   margin-bottom: 10px;
   padding: 15px;
   width: calc(33% - 40px);
-  border-radius: 7%;
-  list-style: column;
+  border-radius: 5px solid;
+  list-style: circle;
   overflow: auto;
   height: 100px;
+  padding-top: 10px;
+  position: center;
+  position: auto ;
+  justify-content: center;
   
 }
 
@@ -51,21 +62,20 @@ footer {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
+  padding: 5px ;
+  position: auto;
+  bottom: 0px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto; 
 
 }
 img {
       width: 50px;
       height: 50px;
       margin-right: 10px;
-      border-radius: 50%;
+      border-radius: 30%;
     
     }
   
