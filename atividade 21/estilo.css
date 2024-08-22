@@ -1,0 +1,21 @@
+.btn-group {
+    margin-bottom: 15px;
+}
+
+.btn-group>.btn {
+    margin-right: 5px;
+}
+
+.btn-group>.btn:last-child {
+    margin-right: 0;
+}
+
+.button-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.button-container>.btn {
+    margin-right: 5px;
+}
