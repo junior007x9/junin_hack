@@ -1,173 +1,153 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa de Produtos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" href="estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="mb-3">
-            <button class="btn btn-primary" ><i class="bi bi-list-task"></i>Pedidos Recentes</button>
-            <button class="btn btn-primary"><i class="bi bi-person-plus-fill"></i>Enviar Cliente</button>
-            <button class="btn btn-primary"><i class="bi bi-list-task"></i>Receber Pagamento</button>
-            <button class="btn btn-primary"><i class="bi bi-newspaper"></i>Todos os Pedidos</button>
-            <button class="btn btn-primary"><i class="bi bi-plus-circle"></i>Novo Pedido</button>
-            <button class="btn btn-primary"><i class="bi bi-house-door"></i>Página Principal</button>
-        </div>
-
-
-        <div class="card">
-            <div class="card-header">
-                Pesquisa de Produtos
-            </div>
-            <div class="card-body">
-                <form class="mb-3">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" placeholder="Descrição">
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-primary w-100">Pesquisar</button>
-                        </div>
-                    </div>
-                    <div class="button-container">
-                        <button class="btn btn-primary btn btn bi bi-search">Pesquisar</button>
-                        <button class="btn btn-primary btn btn bi bi-file-earmark-plus-fill" data-bs-toggle="modal" data-bs-target="#novoProdutoModal">Novo</button>
-                        <button class="btn btn-primary bi bi-arrow-clockwise"></i> Recarregar</button>
-                        </button>
-                    </div>
-                </form>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Descrição</th>
-                            <th>Situação</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Pizza</td>
-                            <td><span class="badge bg-success">Ativo</span></td>
-                            <td>
-                                <button 
-                                    class="btn btn-primary"   
-                                    id="btnRemover"
-                                    data-bs-toggle="popover" 
-                                    data-bs-trigger="focus"
-                                    title="Informações"
-                                    data-bs-content="Descrição"
-                                    data-bs-html="true">
-                                    <i class="bi bi-list-task"></i>
-                                </button>
-                                <button 
-                                    class="btn btn-primary"   
-                                    id="btnEditar"
-                                    data-bs-toggle="popover" 
-                                    data-bs-trigger="focus"
-                                    title="Detalhes"
-                                    data-bs-content="Informações"
-                                    data-bs-html="true">
-                                    <i class="bi bi-eye"></i>
-                                </button>
-                                <button 
-                                    class="btn btn-primary"   
-                                    id="btnEditar"
-                                    data-bs-toggle="popover" 
-                                    data-bs-trigger="focus"
-                                    title="Confirmar Exclusão"
-                                    data-bs-content="Remover"
-                                    data-bs-html="true">
-                                    <i class="bi bi-trash"></i>
-                                    
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-
-       
-        <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#novoProdutoModal">Novo</button>
-
-        
-        <div class="modal fade" id="novoProdutoModal" tabindex="-1" aria-labelledby="novoProdutoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="novoProdutoModalLabel">Novo Produto</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="nomeProduto" class="form-label">Nome do Produto</label>
-                                <input type="text" class="form-control" id="nomeProduto" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="precoProduto" class="form-label">Preço</label>
-                                <input type="number" class="form-control" id="precoProduto" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="categoriaProduto" class="form-label">Categoria</label>
-                                <select class="form-control" id="categoriaProduto" required>
-                                    <option value="Alimentos">Alimentos</option>
-                                    <option value="Bebidas">Bebidas</option>
-                                    <option value="Eletrônicos">Eletrônicos</option>
-                                    <option value="Roupas">Roupas</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="quantidadeProduto" class="form-label">Quantidade</label>
-                                <input type="number" class="form-control" id="quantidadeProduto" required>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Salvar Produto</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn-custom {
+            margin-right: 10px;
+        }
+        .confirmation-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .confirmation-card.active {
+            display: block;
+        }
+    </style>
+  
     
     <script>
-        
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-
-        
-        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl);
-        });
-
-        function confirmarRemocao() {
-            alert('Produto removido!');
-        
-        }
-
-        function cancelarRemocao() {
-            alert('Remoção cancelada!');
-            
+        function confirmarAcao(acao, id) {
+            const card = document.getElementById('confirmation-card');
+            card.querySelector('.card-title').innerText = `Confirmar ${acao}`;
+            card.querySelector('.card-text').innerText = `Você tem certeza que deseja ${acao} o item com ID ${id}?`;
+            card.querySelector('.btn-confirm').onclick = function() {
+                card.classList.remove('active');
+            };
+            card.querySelector('.btn-cancel').onclick = function() {
+                card.classList.remove('active');
+            };
+            card.classList.add('active');
         }
     </script>
+</head>
+<body>
+    
+    
+
+<div class="container">
+    
+    <div class="mb-4">
+        <button class="btn btn-info btn-custom">Pedidos Recentes</button>
+        <button class="btn btn-info btn-custom">Enviar Cliente</button>
+        <button class="btn btn-info btn-custom">Receber Pagamento</button>
+        <button class="btn btn-info btn-custom">Todos os Pedidos</button>
+        <button class="btn btn-info btn-custom">Novo Pedido</button>
+        <button class="btn btn-info btn-custom">Página Principal</button>
+    </div>
+    <div class="mb-4">
+        <h2>Pesquisa de Produtos</h2>
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <label for="descricao" class="sr-only">Descrição</label>
+                <input type="text" class="form-control" id="descricao" placeholder="Descrição">
+            </div>
+            <button type="submit" class="btn btn-info btn-custom">Pesquisar</button>
+            <button type="button" class="btn btn-info btn-custom">Recarregar</button>
+            <button type="button" class="btn btn-info btn-custom">Novo</button>
+        </form>
+    </div>
+    <div class="mb-4 d-flex align-items-center">
+        <label for="registrosPorPagina" class="mr-2">Registros por página:</label>
+        <select id="registrosPorPagina" class="form-control w-auto d-inline-block mr-2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <button type="button" class="btn btn-primary">Buscar</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Pizza</td>
+                <td><button class="btn btn-success btn-sm">Ativo</button></td>
+                <td>
+                    <button class="btn btn-info btn-sm" onclick="confirmarAcao('ver detalhes', 1)">Ver Detalhes</button>
+                    <button class="btn btn-primary btn-sm" onclick="confirmarAcao('editar', 1)">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmarAcao('excluir', 1)">Excluir</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Refrigerante</td>
+                <td><button class="btn btn-success btn-sm">Ativo</button></td>
+                <td>
+                    <button class="btn btn-info btn-sm" onclick="confirmarAcao('ver detalhes', 2)">Ver Detalhes</button>
+                    <button class="btn btn-primary btn-sm" onclick="confirmarAcao('editar', 2)">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmarAcao('excluir', 2)">Excluir</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Cajuína</td>
+                <td><button class="btn btn-danger btn-sm">Inativo</button></td>
+                <td>
+                    <button class="btn btn-info btn-sm" onclick="confirmarAcao('ver detalhes', 3)">Ver Detalhes</button>
+                    <button class="btn btn-primary btn-sm" onclick="confirmarAcao('editar', 3)">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmarAcao('excluir', 3)">Excluir</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Pão</td>
+                <td><button class="btn btn-success btn-sm">Ativo</button></td>
+                <td>
+                    <button class="btn btn-info btn-sm" onclick="confirmarAcao('ver detalhes', 4)">Ver Detalhes</button>
+                    <button class="btn btn-primary btn-sm" onclick="confirmarAcao('editar', 4)">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmarAcao('excluir', 4)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="confirmation-card" class="confirmation-card">
+    <h5 class="card-title">Confirmar Ação</h5>
+    <p class="card-text">Você tem certeza que deseja realizar esta ação?</p>
+    <button class="btn btn-primary btn-confirm">Sim</button>
+    <button class="btn btn-secondary btn-cancel">Não</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.9/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
