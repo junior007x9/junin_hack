@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Exercício - Modal</title>  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function mostrarModal() {
+            var texto = prompt("Digite seu texto aqui:");
+            if (texto) {
+                document.getElementById("modalTexto").innerText = texto;
+                $('#meuModal').modal('show');
+            }
+        }
+    </script>
+  <script type="text/javascript">
+    function minhafuncao(arg1,arg2){
+      var soma = arg1 + arg2;
+      var msg = 'A soma é igual a ';
+      alert(msg+soma);
+      var flag = true;
+      if(flag){
+        alert('verdadeiro')
+      }
+      else{
+        alert('falso')
+      }
+      var raiz = Math.sqrt(arg);
+    }
+    function escreve(arg){
+      document.getElementById("minhadiv").innerHTML=arg;
+    }
+  </script>
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Exercício - Modal</h2>
+    <button type="button" class="btn btn-primary" onclick="mostrarModal()">Abrir modal</button>
+</div>
+
+
+<div class="modal" id="meuModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h4 class="modal-title">Modal</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            
+            <div class="modal-body" id="modalTexto">
+                
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <a href="javascript:escreve()">escreve</a><br>
+  <button onclick="minhafuncao(10,20)">Clique</button>
+  <div id="minha div"></div>
+  </button>
+</body>
+</html>
