@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CEP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Consulta CEP</h1>
+        <form id="cepForm">
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" placeholder="Digite o CEP" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+        </form>
+        <div class="result">
+            <h3>Resultado:</h3>
+            <p id="logradouro"></p>
+            <p id="bairro"></p>
+            <p id="localidade"></p>
+            <p id="uf"></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#cepForm').on('submit', function(event) {
+                event.preventDefault();
+                var cep = $('#cep').val().replace(/\D/g, '');
+                if (cep != "") {
+                    var validacep = /^[0-9]{8}$/;
+                    if(validacep.test(cep)) {
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
+                            if (!("erro" in dados)) {
+                                $('#logradouro').text("Logradouro: " + dados.logradouro);
+                                $('#bairro').text("Bairro: " + dados.bairro);
+                                $('#localidade').text("Localidade: " + dados.localidade);
+                                $('#uf').text("UF: " + dados.uf);
+                            } else {
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } else {
+                        alert("Formato de CEP inválido.");
+                    }
+                } else {
+                    alert("Por favor, preencha o campo CEP.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
