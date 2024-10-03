@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Teste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            background-color: #6f42c1;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #563d7c;
+        }
+        .card-header {
+            background-color: #6f42c1;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loginForm" class="card">
+            <div class="card-header">
+                <h2>Login</h2>
+            </div>
+            <div class="card-body">
+                <form onsubmit="event.preventDefault(); login();">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-custom">Login</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="mainPage" class="card" style="display:none;">
+            <div class="card-header">
+                <h2>Página Principal</h2>
+            </div>
+            <div class="card-body">
+                <div class="accordion" id="mainAccordion">
+                    <div class="card">
+                        <div class="card-header" id="headingEquipes">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseEquipes" aria-expanded="true" aria-controls="collapseEquipes">
+                                    Gerenciamento de Equipes
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseEquipes" class="collapse show" aria-labelledby="headingEquipes" data-parent="#mainAccordion">
+                            <div class="card-body">
+                                <a href="#" class="btn btn-custom" onclick="document.getElementById('cadastroEquipe').style.display='block';">Cadastrar Equipe</a><br>
+                                <a href="#" class="btn btn-custom" onclick="listarEquipes();">Listar Equipes</a><br>
+                                <div id="cadastroEquipe" class="card" style="display:none;">
+                                    <div class="card-body">
+                                        <h2 class="card-title">Cadastro de Equipe</h2>
+                                        <form onsubmit="event.preventDefault(); cadastrarEquipe();">
+                                            <div class="form-group">
+                                                <label for="nomeEquipe">Nome da Equipe:</label>
+                                                <input type="text" id="nomeEquipe" name="nomeEquipe" class="form-control" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-custom">Cadastrar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <h2 class="card-title">Suas Equipes</h2>
+                                <ul id="listaEquipes" class="list-group"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingAtividades">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseAtividades" aria-expanded="false" aria-controls="collapseAtividades">
+                                    Gerenciamento de Atividades
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseAtividades" class="collapse" aria-labelledby="headingAtividades" data-parent="#mainAccordion">
+                            <div class="card-body">
+                                <a href="#" class="btn btn-custom" onclick="document.getElementById('cadastroAtividade').style.display='block';">Cadastrar Atividade</a><br>
+                                <a href="#" class="btn btn-custom" onclick="listarAtividades();">Listar Atividades</a><br>
+                                <div id="cadastroAtividade" class="card" style="display:none;">
+                                    <div class="card-body">
+                                        <h2 class="card-title">Cadastro de Atividade</h2>
+                                        <form onsubmit="event.preventDefault(); cadastrarAtividade();">
+                                            <div class="form-group">
+                                                <label for="nomeAtividade">Nome da Atividade:</label>
+                                                <input type="text" id="nomeAtividade" name="nomeAtividade" class="form-control" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-custom">Cadastrar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <h2 class="card-title">Atividades da Equipe</h2>
+                                <ul id="listaAtividades" class="list-group"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingLogout">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseLogout" aria-expanded="false" aria-controls="collapseLogout">
+                                    Sair do Sistema
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseLogout" class="collapse" aria-labelledby="headingLogout" data-parent="#mainAccordion">
+                            <div class="card-body">
+                                <form onsubmit="event.preventDefault(); logout();">
+                                    <button type="submit" class="btn btn-custom">Sair</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        let jogadores = [];
+        let equipes = [];
+        let atividades = [];
+        let usuarioLogado = null;
+
+        function login() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const jogador = jogadores.find(j => j.email === email && j.senha === senha);
+            if (jogador) {
+                usuarioLogado = jogador;
+                alert('Login bem-sucedido!');
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('mainPage').style.display = 'block';
+            } else {
+                alert('Email ou senha incorretos!');
+            }
+        }
+
+        function cadastrarEquipe() {
+            const nome = document.getElementById('nomeEquipe').value;
+            const equipe = { id: equipes.length + 1, nome: nome, jogadorID: usuarioLogado.id };
+            equipes.push(equipe);
+            alert('Equipe cadastrada com sucesso!');
+        }
+
+        function listarEquipes() {
+            const lista = document.getElementById('listaEquipes');
+            lista.innerHTML = '';
+            equipes.filter(e => e.jogadorID === usuarioLogado.id).forEach(equipe => {
+                const item = document.createElement('li');
+                item.className = 'list-group-item';
+                item.textContent = equipe.nome;
+                lista.appendChild(item);
+            });
+        }
+
+        function cadastrarAtividade() {
+            const nome = document.getElementById('nomeAtividade').value;
+            const atividade = { id: atividades.length + 1, nome: nome, equipeID: usuarioLogado.id };
+            atividades.push(atividade);
+            alert('Atividade cadastrada com sucesso!');
+        }
+
+        function listarAtividades() {
+            const lista = document.getElementById('listaAtividades');
+            lista.innerHTML = '';
+            atividades.filter(a => a.equipeID === usuarioLogado.id).forEach(atividade => {
+                const item = document.createElement('li');
+                item.className = 'list-group-item';
+                item.textContent = atividade.nome;
+                lista.appendChild(item);
+            });
+        }
+
+        function logout() {
+            usuarioLogado = null;
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('mainPage').style.display = 'none';
+        }
+
+    
+        jogadores.push({ id: 1, nome: 'João', email: 'ana@julia.com', senha: '1234' });
+    </script>
+
+    
+    <script src="https://code.jquery.com/jquery-3
+</script>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
