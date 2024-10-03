@@ -1,0 +1,120 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: url('https://i.gifer.com/7Jjt.gif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px;
+  box-sizing: border-box;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ff009d;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #8a006a;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+.links {
+  text-align: center;
+  margin-top: 10px;
+}
+.links a {
+  color: #d50a9b;
+  text-decoration: none;
+}
+.hidden {
+  display: none;
+}
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.game {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.game img {
+  width: 100%;
+  border-radius: 4px;
+}
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.category {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #ff00bb;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+}
+@media (min-width: 600px) {
+  .container {
+      max-width: 800px;
+  }
+  .game {
+      max-width: 200px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+      max-width: 1000px;
+  }
+  .game {
+      max-width: 250px;
+  }
+}
+  @font-face {
+    font-family: 'HEAT';
+    src: url('fonts/Winie Beige.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'HEAT', Arial, sans-serif;
+}

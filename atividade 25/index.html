@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Nome de Usuário</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label>
+                <input type="checkbox" name="remember"> Lembre-me
+            </label>
+            
+            <button type="submit">Iniciar Sessão</button>
+        </form>
+        <div class="links">
+            <a href="#">Não consigo iniciar a sessão</a><br>
+            <a href="#">Não tem uma conta? Cadastre-se gratuitamente</a>
+        </div>
+        <div id="message"></div>
+    </div>
+
+    <div class="dashboard-container hidden" id="dashboardContainer">
+        <h2>Painel do Jogador</h2>
+        <button onclick="showSection('cadastrarEquipe')">Cadastrar Equipe</button>
+        <button onclick="showSection('listarEquipes')">Listar Equipes</button>
+        <button onclick="showSection('cadastrarAtividade')">Cadastrar Atividade da Equipe</button>
+        <button onclick="showSection('listarAtividades')">Listar Atividades</button>
+        <button onclick="logout()">Sair</button>
+        
+        <div id="cadastrarEquipe" class="hidden">
+            <h3>Cadastrar Equipe</h3>
+            <form id="cadastrarEquipeForm">
+                <label for="teamName">Nome da Equipe</label>
+                <input type="text" id="teamName" name="teamName" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        
+        <div id="listarEquipes" class="hidden">
+            <h3>Listar Equipes</h3>
+            <ul id="teamList"></ul>
+        </div>
+        
+        <div id="cadastrarAtividade" class="hidden">
+            <h3>Cadastrar Atividade da Equipe</h3>
+            <form id="cadastrarAtividadeForm">
+                <label for="activityName">Nome da Atividade</label>
+                <input type="text" id="activityName" name="activityName" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        
+        <div id="listarAtividades" class="hidden">
+            <h3>Listar Atividades</h3>
+            <ul id="activityList"></ul>
+        </div>
+
+        <div class="games-container">
+            <div class="game">
+                <img src="https://s2.glbimg.com/s2EDtZP8b0uROq4wJffi3FkUB1w=/0x0:788x443/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/v/l/U2hwGWR6mAWBrzMDG6IQ/pubg-mobile.jpg" alt="Jogo 1">
+                <p>Equipe A - Pubg</p>
+            </div>
+            <div class="game">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/227300/header.jpg?t=1726766157" width="150" height="150" alt="Jogo 2"> 
+                <p>Equipe B - Euro Truck Simulator 2</p>
+            </div>
+            <div class="game">
+                <img src="https://f.i.uol.com.br/fotografia/2020/05/18/15898209045ec2bde8d74a0_1589820904_3x2_md.jpg" alt="Jogo 3">
+                <p>Equipe C - Fortinite</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+           
+            const users = [
+                { username: '1', password: '2' },
+                { username: 'usuario2', password: 'senha2' }
+            ];
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            
+            const user = users.find(user => user.username === username && user.password === password);
+
+            const messageDiv = document.getElementById('message');
+            if (user) {
+                messageDiv.innerHTML = `<p>Login bem-sucedido! Bem-vindo, ${username}.</p>`;
+                messageDiv.style.color = 'green';
+                document.getElementById('loginContainer').classList.add('hidden');
+                document.getElementById('dashboardContainer').classList.remove('hidden');
+            } else {
+                messageDiv.innerHTML = `<p>Nome de usuário ou senha incorretos.</p>`;
+                messageDiv.style.color = 'red';
+            }
+        });
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.dashboard-container > div');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        document.getElementById('cadastrarEquipeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const teamName = document.getElementById('teamName').value;
+            const teamList = document.getElementById('teamList');
+            const listItem = document.createElement('li');
+            listItem.textContent = teamName;
+            teamList.appendChild(listItem);
+            document.getElementById('teamName').value = '';
+        });
+
+        document.getElementById('cadastrarAtividadeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const activityName = document.getElementById('activityName').value;
+            const activityList = document.getElementById('activityList');
+            const listItem = document.createElement('li');
+            listItem.textContent = activityName;
+            activityList.appendChild(listItem);
+            document.getElementById('activityName').value = '';
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
