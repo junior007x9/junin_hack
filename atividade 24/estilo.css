@@ -1,0 +1,16 @@
+.section {
+  display: none;
+}
+
+.form-container {
+  text-align: center;
+  margin: 20px;
+}
+
+#login {
+  display: block;
+}
+
+.table {
+  margin-top: 20px;
+}
