@@ -1,217 +1,148 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Teste</title>
+    <title>Plataforma</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .card {
-            margin-bottom: 20px;
-        }
-        .btn-custom {
-            background-color: #6f42c1;
-            color: white;
-        }
-        .btn-custom:hover {
-            background-color: #563d7c;
-        }
-        .card-header {
-            background-color: #6f42c1;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <div class="container">
-        <div id="loginForm" class="card">
-            <div class="card-header">
-                <h2>Login</h2>
-            </div>
-            <div class="card-body">
-                <form onsubmit="event.preventDefault(); login();">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input type="password" id="senha" name="senha" class="form-control" required>
-                    </div>
-                    <button type="submit" class="btn btn-custom">Login</button>
-                </form>
-            </div>
+    <div class="login-container" id="loginContainer">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Nome de Usuário</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label>
+                <input type="checkbox" name="remember"> Lembre-me
+            </label>
+            
+            <button type="submit">Iniciar Sessão</button>
+        </form>
+        <div class="links">
+            <a href="#">Não consigo iniciar a sessão</a><br>
+            <a href="#">Não tem uma conta? Cadastre-se gratuitamente</a>
+        </div>
+        <div id="message"></div>
+    </div>
+
+    <div class="dashboard-container hidden" id="dashboardContainer">
+        <h2>Painel do Jogador</h2>
+        <button onclick="showSection('cadastrarEquipe')">Cadastrar Equipe</button>
+        <button onclick="showSection('listarEquipes')">Listar Equipes</button>
+        <button onclick="showSection('cadastrarAtividade')">Cadastrar Atividade da Equipe</button>
+        <button onclick="showSection('listarAtividades')">Listar Atividades</button>
+        <button onclick="logout()">Sair</button>
+        
+        <div id="cadastrarEquipe" class="hidden">
+            <h3>Cadastrar Equipe</h3>
+            <form id="cadastrarEquipeForm">
+                <label for="teamName">Nome da Equipe</label>
+                <input type="text" id="teamName" name="teamName" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        
+        <div id="listarEquipes" class="hidden">
+            <h3>Listar Equipes</h3>
+            <ul id="teamList"></ul>
+        </div>
+        
+        <div id="cadastrarAtividade" class="hidden">
+            <h3>Cadastrar Atividade da Equipe</h3>
+            <form id="cadastrarAtividadeForm">
+                <label for="activityName">Nome da Atividade</label>
+                <input type="text" id="activityName" name="activityName" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+        
+        <div id="listarAtividades" class="hidden">
+            <h3>Listar Atividades</h3>
+            <ul id="activityList"></ul>
         </div>
 
-        <div id="mainPage" class="card" style="display:none;">
-            <div class="card-header">
-                <h2>Página Principal</h2>
+        <div class="games-container">
+            <div class="game">
+                <img src="https://via.placeholder.com/150" alt="Jogo 1">
+                <p>Equipe A - Jogo 1</p>
             </div>
-            <div class="card-body">
-                <div class="accordion" id="mainAccordion">
-                    <div class="card">
-                        <div class="card-header" id="headingEquipes">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseEquipes" aria-expanded="true" aria-controls="collapseEquipes">
-                                    Gerenciamento de Equipes
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseEquipes" class="collapse show" aria-labelledby="headingEquipes" data-parent="#mainAccordion">
-                            <div class="card-body">
-                                <a href="#" class="btn btn-custom" onclick="document.getElementById('cadastroEquipe').style.display='block';">Cadastrar Equipe</a><br>
-                                <a href="#" class="btn btn-custom" onclick="listarEquipes();">Listar Equipes</a><br>
-                                <div id="cadastroEquipe" class="card" style="display:none;">
-                                    <div class="card-body">
-                                        <h2 class="card-title">Cadastro de Equipe</h2>
-                                        <form onsubmit="event.preventDefault(); cadastrarEquipe();">
-                                            <div class="form-group">
-                                                <label for="nomeEquipe">Nome da Equipe:</label>
-                                                <input type="text" id="nomeEquipe" name="nomeEquipe" class="form-control" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-custom">Cadastrar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <h2 class="card-title">Suas Equipes</h2>
-                                <ul id="listaEquipes" class="list-group"></ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingAtividades">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseAtividades" aria-expanded="false" aria-controls="collapseAtividades">
-                                    Gerenciamento de Atividades
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseAtividades" class="collapse" aria-labelledby="headingAtividades" data-parent="#mainAccordion">
-                            <div class="card-body">
-                                <a href="#" class="btn btn-custom" onclick="document.getElementById('cadastroAtividade').style.display='block';">Cadastrar Atividade</a><br>
-                                <a href="#" class="btn btn-custom" onclick="listarAtividades();">Listar Atividades</a><br>
-                                <div id="cadastroAtividade" class="card" style="display:none;">
-                                    <div class="card-body">
-                                        <h2 class="card-title">Cadastro de Atividade</h2>
-                                        <form onsubmit="event.preventDefault(); cadastrarAtividade();">
-                                            <div class="form-group">
-                                                <label for="nomeAtividade">Nome da Atividade:</label>
-                                                <input type="text" id="nomeAtividade" name="nomeAtividade" class="form-control" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-custom">Cadastrar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <h2 class="card-title">Atividades da Equipe</h2>
-                                <ul id="listaAtividades" class="list-group"></ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingLogout">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseLogout" aria-expanded="false" aria-controls="collapseLogout">
-                                    Sair do Sistema
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseLogout" class="collapse" aria-labelledby="headingLogout" data-parent="#mainAccordion">
-                            <div class="card-body">
-                                <form onsubmit="event.preventDefault(); logout();">
-                                    <button type="submit" class="btn btn-custom">Sair</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="game">
+                <img src="https://via.placeholder.com/150" alt="Jogo 2">
+                <p>Equipe B - Jogo 2</p>
+            </div>
+            <div class="game">
+                <img src="https://via.placeholder.com/150" alt="Jogo 3">
+                <p>Equipe C - Jogo 3</p>
+            </div>
+            <div class="game">
+                <img src="https://via.placeholder.com/150" alt="Jogo 4">
+                <p>Equipe D - Jogo 4</p>
             </div>
         </div>
     </div>
 
     <script>
-        
-        let jogadores = [];
-        let equipes = [];
-        let atividades = [];
-        let usuarioLogado = null;
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-        function login() {
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            const jogador = jogadores.find(j => j.email === email && j.senha === senha);
-            if (jogador) {
-                usuarioLogado = jogador;
-                alert('Login bem-sucedido!');
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('mainPage').style.display = 'block';
+           
+            const users = [
+                { username: '1', password: '2' },
+                { username: 'usuario2', password: 'senha2' }
+            ];
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            
+            const user = users.find(user => user.username === username && user.password === password);
+
+            const messageDiv = document.getElementById('message');
+            if (user) {
+                messageDiv.innerHTML = `<p>Login bem-sucedido! Bem-vindo, ${username}.</p>`;
+                messageDiv.style.color = 'green';
+                document.getElementById('loginContainer').classList.add('hidden');
+                document.getElementById('dashboardContainer').classList.remove('hidden');
             } else {
-                alert('Email ou senha incorretos!');
+                messageDiv.innerHTML = `<p>Nome de usuário ou senha incorretos.</p>`;
+                messageDiv.style.color = 'red';
             }
+        });
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.dashboard-container > div');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
         }
 
-        function cadastrarEquipe() {
-            const nome = document.getElementById('nomeEquipe').value;
-            const equipe = { id: equipes.length + 1, nome: nome, jogadorID: usuarioLogado.id };
-            equipes.push(equipe);
-            alert('Equipe cadastrada com sucesso!');
-        }
+        document.getElementById('cadastrarEquipeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const teamName = document.getElementById('teamName').value;
+            const teamList = document.getElementById('teamList');
+            const listItem = document.createElement('li');
+            listItem.textContent = teamName;
+            teamList.appendChild(listItem);
+            document.getElementById('teamName').value = '';
+        });
 
-        function listarEquipes() {
-            const lista = document.getElementById('listaEquipes');
-            lista.innerHTML = '';
-            equipes.filter(e => e.jogadorID === usuarioLogado.id).forEach(equipe => {
-                const item = document.createElement('li');
-                item.className = 'list-group-item';
-                item.textContent = equipe.nome;
-                lista.appendChild(item);
-            });
-        }
-
-        function cadastrarAtividade() {
-            const nome = document.getElementById('nomeAtividade').value;
-            const atividade = { id: atividades.length + 1, nome: nome, equipeID: usuarioLogado.id };
-            atividades.push(atividade);
-            alert('Atividade cadastrada com sucesso!');
-        }
-
-        function listarAtividades() {
-            const lista = document.getElementById('listaAtividades');
-            lista.innerHTML = '';
-            atividades.filter(a => a.equipeID === usuarioLogado.id).forEach(atividade => {
-                const item = document.createElement('li');
-                item.className = 'list-group-item';
-                item.textContent = atividade.nome;
-                lista.appendChild(item);
-            });
-        }
-
-        function logout() {
-            usuarioLogado = null;
-            document.getElementById('loginForm').style.display = 'block';
-            document.getElementById('mainPage').style.display = 'none';
-        }
-
-    
-        jogadores.push({ id: 1, nome: 'João', email: 'ana@julia.com', senha: '1234' });
+        document.getElementById('cadastrarAtividadeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const activityName = document.getElementById('activityName').value;
+            const activityList = document.getElementById('activityList');
+            const listItem = document.createElement('li');
+            listItem.textContent = activityName;
+            activityList.appendChild(listItem);
+            document.getElementById('activityName').value = '';
+        });
     </script>
-
-    
-    <script src="https://code.jquery.com/jquery-3
-</script>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
